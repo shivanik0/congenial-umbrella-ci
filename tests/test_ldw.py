@@ -13,7 +13,7 @@ events = [
 
 def test_count_per_vehicle_per_hour():
     result = ldw_count_per_vehicle_per_hour(events)
-    assert result["V1"]["2026-09-07 08"] == 3 #changed from 2 to 3 for testing ci workflow fail
+    assert result["V1"]["2026-09-07 08"] == 2 #changed from 2 to 3 for testing ci workflow fail
     assert result["V1"]["2026-09-07 09"] == 1
     assert result["V2"]["2026-09-07 08"] == 1
     assert "V2" not in result or "2026-09-07 10" not in result.get("V2", {})
