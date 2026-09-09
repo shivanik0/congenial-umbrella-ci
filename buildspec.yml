@@ -1,0 +1,34 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+    commands:
+      - echo "Installing dependencies"
+      - pip install pytest
+
+  pre_build:
+    commands:
+      - echo "Pre-build checks"
+      - python --version
+
+  build:
+    commands:
+      - echo "Running LDW unit tests"
+      - pytest tests/ -v --junitxml=results.xml
+
+  post_build:
+    commands:
+      - echo "Build complete, uploading results"
+
+artifacts:
+  files:
+    - results.xml
+  base-directory: .
+
+reports:
+  pytest-reports:
+    files:
+      - results.xml
+    file-format: JUNITXML
